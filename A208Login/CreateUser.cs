@@ -84,7 +84,7 @@ namespace A208Login
                     }
                     if (validname && validpass)
                     {
-                        Valid student = new Valid(firstBox.Text, lastBox.Text, passBox.Text);
+                        Valid student = new Valid(firstBox.Text, lastBox.Text, passBox.Text);                        
                         //perform a check for duplicate Student IDs
                         if(student.DupeCheck(passBox.Text))
                         {

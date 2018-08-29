@@ -207,7 +207,7 @@ namespace A208Login
                         string lastname = fullname[0].Trim();
                         string firstname = fullname[1].Trim();
                         Valid student = new Valid(firstname, lastname, passBox.Text);
-                        if (student.Auth(firstname, lastname, passBox.Text))    //executes DB query to match passwords
+                        if(student.Auth(firstname, lastname, passBox.Text))    //executes DB query to match passwords
                         {
 
                             //create/append a log file with name, ID, major and timestamp
