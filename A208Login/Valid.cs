@@ -44,6 +44,7 @@ namespace A208Login
             /*
              * The following are the Name and ID declarations for this class
              */
+
         #region Class declarations
         private string _fname;
         private string _lname;
@@ -85,32 +86,37 @@ namespace A208Login
          */
         #region PasswordRetrieval
 
-            /*
-             * The Auth method overloads are used to determine if the login is for a student or an administrator
-             * Student logins must provide two name strings, one for first name and one for last name.
-             * Admin logins only provide the name of the Administrator login
-             * This determines which SQL connection and statement is sent to the retrieve password module
-             */
+        /*
+         * The Auth method overloads are used to determine if the login is for a student or an administrator
+         * Student logins must provide two name strings, one for first name and one for last name.
+         * Admin logins only provide the name of the Administrator login
+         * This determines which SQL connection and statement is sent to the retrieve password module
+         */
         public bool Auth(string name, string pass)  //authentication for administrators
-        {
-            SqlConnection connectionstring = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\\Admins.mdf;Integrated Security = True");
-            string querypassword = "SELECT Password FROM dbo.Admin WHERE Admin.Name = @name;";
-            SqlCommand cmd = new SqlCommand();
-            SqlParameter nameParam = new SqlParameter("@name", SqlDbType.VarChar, 30);
-            nameParam.Value = name;
-            cmd.Parameters.Add(nameParam);
-            cmd.Connection = connectionstring;
-            cmd.CommandText = querypassword;
-            if (RetrievePass(cmd).Contains(pass)) //This checks to see if the returned string contains
-            {                                     //the password provided.  This methodology is less
-                return true;                      //important for admin logins as names are unique in this table
+        {            
+            using (SqlConnection connectionstring = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\\Admins.mdf;Integrated Security = True"))
+            { 
+                string querypassword = "SELECT Password FROM dbo.Admin WHERE Admin.Name = @name;";
+                SqlCommand cmd = new SqlCommand();
+                SqlParameter nameParam = new SqlParameter("@name", SqlDbType.VarChar, 30);
+                nameParam.Value = name;
+                cmd.Parameters.Add(nameParam);
+                cmd.Connection = connectionstring;
+                cmd.CommandText = querypassword;
+                if (RetrievePass(cmd).Contains(pass)) //This checks to see if the returned string contains
+                {                                     //the password provided.  This methodology is less
+                    return true;                      //important for admin logins as names are unique in this table
+                }
             }
             return false;
         }
 
         public bool Auth(string fname, string lname, string pass)  //authentication for students
         {
-
+            if(pass.Trim().Length == 0)
+            {
+                return false;
+            }
             using (SqlConnection connectionstring = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Students.mdf;Integrated Security=True;Connect Timeout=30"))
             {
                 string querypassword = "SELECT StudentID FROM dbo.Student WHERE (Student.FirstName = @fname) AND (Student.Lastname = @lname);";
@@ -236,7 +242,11 @@ namespace A208Login
             }
             catch(Exception)
             {
-                
+                return " "; /*this return is intended to be used solely for use with the FirstLoadPassword
+                             *form, and the Form.StudentLogin.FirstTimeLoad function.  If this return value
+                             *occurs anywhere else notify creator so security updates can be made.
+                             *This return value should only occur if a null password is retrieved from the
+                             *database*/
             }
             results = results.Trim();
             return results;

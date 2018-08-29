@@ -61,7 +61,7 @@
             this.createNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.createNameBox.Name = "createNameBox";
             this.createNameBox.Size = new System.Drawing.Size(148, 44);
-            this.createNameBox.TabIndex = 0;
+            this.createNameBox.TabIndex = 1;
             // 
             // createPassBox
             // 
@@ -69,7 +69,7 @@
             this.createPassBox.Margin = new System.Windows.Forms.Padding(4);
             this.createPassBox.Name = "createPassBox";
             this.createPassBox.Size = new System.Drawing.Size(148, 44);
-            this.createPassBox.TabIndex = 1;
+            this.createPassBox.TabIndex = 2;
             this.createPassBox.UseSystemPasswordChar = true;
             // 
             // createConfirmBox
@@ -78,7 +78,7 @@
             this.createConfirmBox.Margin = new System.Windows.Forms.Padding(4);
             this.createConfirmBox.Name = "createConfirmBox";
             this.createConfirmBox.Size = new System.Drawing.Size(148, 44);
-            this.createConfirmBox.TabIndex = 2;
+            this.createConfirmBox.TabIndex = 3;
             this.createConfirmBox.UseSystemPasswordChar = true;
             // 
             // updatePassBox
@@ -87,7 +87,7 @@
             this.updatePassBox.Margin = new System.Windows.Forms.Padding(4);
             this.updatePassBox.Name = "updatePassBox";
             this.updatePassBox.Size = new System.Drawing.Size(172, 44);
-            this.updatePassBox.TabIndex = 3;
+            this.updatePassBox.TabIndex = 7;
             this.updatePassBox.UseSystemPasswordChar = true;
             // 
             // confirmPassBox
@@ -96,7 +96,7 @@
             this.confirmPassBox.Margin = new System.Windows.Forms.Padding(4);
             this.confirmPassBox.Name = "confirmPassBox";
             this.confirmPassBox.Size = new System.Drawing.Size(172, 44);
-            this.confirmPassBox.TabIndex = 4;
+            this.confirmPassBox.TabIndex = 8;
             this.confirmPassBox.UseSystemPasswordChar = true;
             // 
             // groupBox1
@@ -116,7 +116,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(515, 641);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create new user";
             // 
@@ -127,7 +127,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(289, 37);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Confirm Password:";
             // 
             // label2
@@ -147,7 +147,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 37);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Enter user name:";
             // 
             // createButton
@@ -156,7 +156,7 @@
             this.createButton.Margin = new System.Windows.Forms.Padding(4);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(138, 85);
-            this.createButton.TabIndex = 1;
+            this.createButton.TabIndex = 4;
             this.createButton.Text = "Create new Admin";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -168,7 +168,7 @@
             this.adminRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.adminRadioButton.Name = "adminRadioButton";
             this.adminRadioButton.Size = new System.Drawing.Size(140, 41);
-            this.adminRadioButton.TabIndex = 4;
+            this.adminRadioButton.TabIndex = 0;
             this.adminRadioButton.Text = "Admin";
             this.adminRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -180,8 +180,7 @@
             this.labRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.labRadioButton.Name = "labRadioButton";
             this.labRadioButton.Size = new System.Drawing.Size(242, 41);
-            this.labRadioButton.TabIndex = 3;
-            this.labRadioButton.TabStop = true;
+            this.labRadioButton.TabIndex = 0;
             this.labRadioButton.Text = "Lab Assistant";
             this.labRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -201,7 +200,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(774, 621);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Update users";
             // 
@@ -212,7 +211,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(223, 37);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Old password:";
             // 
             // oldPassBox
@@ -221,7 +220,7 @@
             this.oldPassBox.Margin = new System.Windows.Forms.Padding(6);
             this.oldPassBox.Name = "oldPassBox";
             this.oldPassBox.Size = new System.Drawing.Size(172, 44);
-            this.oldPassBox.TabIndex = 8;
+            this.oldPassBox.TabIndex = 6;
             this.oldPassBox.UseSystemPasswordChar = true;
             // 
             // label5
@@ -230,7 +229,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(260, 80);
-            this.label5.TabIndex = 7;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Confirm password:";
             // 
             // label4
@@ -240,7 +239,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(237, 37);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 0;
             this.label4.Text = "New password:";
             // 
             // updateButton
@@ -249,7 +248,7 @@
             this.updateButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(174, 92);
-            this.updateButton.TabIndex = 5;
+            this.updateButton.TabIndex = 9;
             this.updateButton.Text = "Update Admin password";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
@@ -274,7 +273,7 @@
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(388, 621);
-            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Remove users";
             // 
@@ -284,7 +283,7 @@
             this.removeButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(199, 92);
-            this.removeButton.TabIndex = 6;
+            this.removeButton.TabIndex = 11;
             this.removeButton.Text = "Remove Admin";
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
@@ -297,7 +296,7 @@
             this.removeListBox.Margin = new System.Windows.Forms.Padding(4);
             this.removeListBox.Name = "removeListBox";
             this.removeListBox.Size = new System.Drawing.Size(284, 337);
-            this.removeListBox.TabIndex = 0;
+            this.removeListBox.TabIndex = 10;
             // 
             // CreateUpdateAdmin
             // 

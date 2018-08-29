@@ -22,7 +22,7 @@ namespace A208Login
             try
             {
                 Valid checking = new Valid();
-                if (checking.Auth(nameBox.Text, passBox.Text))  //Authentication for labassist/admins
+                if (checking.Auth(nameBox.Text, passBox.Text) && passBox.Text.Length > 0)  //Authentication for labassist/admins
                 {
                     this.authok = checking.Type(nameBox.Text, passBox.Text);    //Assigns the login type
                     this.DialogResult = DialogResult.OK;                        //to the authok field

@@ -3,7 +3,6 @@ C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\bin\
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\bin\Debug\A208Login.exe.config
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\bin\Debug\A208Login.exe
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\bin\Debug\A208Login.pdb
-C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.csprojResolveAssemblyReference.cache
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.Properties.Resources.resources
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.csproj.GenerateResource.Cache
 C:\Users\Mesathus\documents\visual studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.exe
@@ -13,8 +12,6 @@ C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\
 C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.AdminLogin.resources
 C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.RemoveStudent.resources
 C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.StudentLogin.resources
-C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\bin\Debug\Admins.mdf
-C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\bin\Debug\Admins_log.ldf
 C:\Users\Mesa\Documents\A208Login\A208Login\bin\Debug\Admins.mdf
 C:\Users\Mesa\Documents\A208Login\A208Login\bin\Debug\Admins_log.ldf
 C:\Users\Mesa\Documents\A208Login\A208Login\bin\Debug\Students.mdf
@@ -77,3 +74,8 @@ C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\
 C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.Logout.resources
 C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.LabPolicy.resources
 J:\Data Structures\A208Login\A208Login\obj\Debug\A208Login.LabPolicy.resources
+C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.csprojAssemblyReference.cache
+C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.FirstLoadPassword.resources
+C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\obj\Debug\A208Login.csproj.CoreCompileInputs.cache
+C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\bin\Debug\Admins.mdf
+C:\Users\Mesathus\Documents\Visual Studio 2017\Projects\A208Login\A208Login\bin\Debug\Admins_log.ldf

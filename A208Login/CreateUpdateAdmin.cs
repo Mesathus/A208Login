@@ -96,11 +96,15 @@ namespace A208Login
                 else
                 {
                     MessageBox.Show("Password confirmation invalid.");
+                    ClearThings();
+                    createNameBox.Focus();
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a name for this user.");
+                ClearThings();
+                createNameBox.Focus();
             }
         }
 
@@ -115,6 +119,8 @@ namespace A208Login
                 if (oldPassBox.Text == string.Empty || updatePassBox.Text == string.Empty || confirmPassBox.Text == string.Empty)
                 {
                     MessageBox.Show("Please fill all password boxes.");
+                    ClearThings();
+                    oldPassBox.Focus();
                 }
                 else
                 {
@@ -162,6 +168,16 @@ namespace A208Login
             {
 
             }
+        }
+
+        private void ClearThings()
+        {
+            createPassBox.Clear();
+            createConfirmBox.Clear();
+            createNameBox.Clear();
+            oldPassBox.Clear();
+            updatePassBox.Clear();
+            confirmPassBox.Clear();
         }
     }
 }

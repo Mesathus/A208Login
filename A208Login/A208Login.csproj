@@ -92,6 +92,12 @@
     <Compile Include="AdminLogin.Designer.cs">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FirstLoadPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FirstLoadPassword.Designer.cs">
+      <DependentUpon>FirstLoadPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabPolicy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FirstLoadPassword.resx">
+      <DependentUpon>FirstLoadPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LabPolicy.resx">
       <DependentUpon>LabPolicy.cs</DependentUpon>
@@ -215,8 +224,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Admins_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Admins.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Circle_2c.jpg" />
     <Content Include="Properties\Circle_2c.jpg" />

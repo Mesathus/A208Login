@@ -8,8 +8,8 @@ using System.Windows.Forms;
  * Created by: John O'Brien with contributions by YTC lab staff and instructors
  * Version: 1.0
  * Created: Feb 2018
- * Current Version: 1.3
- * Last Updated: 4/27/2018
+ * Current Version: 1.4
+ * Last Updated: 8/29/2018
  * Originally designed for YTC student lab
  * See attached document for initial design specs and notes
  * Initial Administrator password: ComeAtMeBro
@@ -17,9 +17,17 @@ using System.Windows.Forms;
  * Initial Admin password intended for testing: yep
  *      The above account should be removed or changed before implementation
  * Encryption key is located in the Utility class
+ * If the encryption key is changed, ensure a fresh Admin database is loaded to prompt
+ * entry of an Administrator password, otherwise SQL functions will not retrieve decrypted
+ * passwords properly
  * All SQL information is located in the Valid(ation) class
  */
  /*
+  * 1.4 notes: New feature added to allow for creation of an Administrator password on first program
+  * load with an empty database.  This is intended to ease changing the encryption key as default
+  * administrator passwords are tied to the default encryption key and must be cleared if the key 
+  * is to be changed.
+  * 
   * 1.3 notes: New feature added to Admin tasks.  Menu strip item has been added to the logging section
   * to allow for a full database to CSV dump.  As students must be purged manually from this database, 
   * this feature was added to aid admins in comparing the database to lists of currently enrolled students.
@@ -51,6 +59,17 @@ namespace A208Login
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Bounds = Screen.PrimaryScreen.Bounds;
+            if(FirstTimeLoad())
+            {
+                using (var myform = new FirstLoadPassword())
+                {
+                    do
+                    {
+                        myform.ShowDialog();
+                    }
+                    while (myform.DialogResult != DialogResult.OK);
+                }
+            }
             using (var myform = new AdminLogin()) //calls the admin login page on program startup
             {
                 do
@@ -519,6 +538,17 @@ namespace A208Login
             {
                 MessageBox.Show("No students currently logged in.");
             }
+        }
+
+        //Function to create an Administrator password if none exists
+        private bool FirstTimeLoad()
+        {
+            Valid admin = new Valid();
+            if(admin.Auth("Administrator", " "))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
