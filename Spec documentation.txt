@@ -1,0 +1,78 @@
+********************************************************************************
+	This document contains a variety of specifications and suggestions, from both
+	myself, administrators and fellow labassistants.  Some of them may have changed
+	or been omitted in the final version, but are preserved here as evidence 
+	of the deranged	ranmblings of a madman.
+********************************************************************************
+
+
+Daily logs
+
+Check-in for tutoring/tracking for who is using
+Audio cue when people log in
+All passwords obscured
+
+--Forms needed--
+Login page - shown on program start only, use labassist login
+Administrator form - change passwords, remove old users, push logs
+Create new user form - add new students - first/last name, student ID
+Login form - Select name from box, enter password, search feature, check in type
+Log parse form - Display students log in/out times with check in type
+----------------
+
+--Administrator form--
+Filter log display, search box for names, IDs, check boxes for login types?  Time of day?
+
+List box of students for removal?
+Buttons to push logs for new users created, and/or user logins
+Password update for create user, program login, and main admin password for Instructors only
+Labassist password update requires admin password
+Remove old users requires labassist or admin password
+----------------------
+
+--Login page--
+Main page that loads on login
+Contains boxes for labassist or admin login, changes to student login page
+--------------
+
+--Create user form--
+Boxes for first/last name and student ID as password
+Requires labassist or admin password to add
+--------------------
+
+--Student login form--
+Boxes for first/last name, student ID as password, confirm ID
+Listbox to select names
+Search box that filters character strings
+Radio buttons for check in type - home/classwork, tutoring, ,using lab 201/258, labassistant?
+Message Box that displays Lab policies
+----------------------
+
+--Log form--
+Only available to admins?
+Can push a log for new users created?  Or append a text with date for this, does it need a search feature to parse
+Pushes logs for daily logins, with first/last name and login type
+Also displays daily logins in list box, possibly for searching?
+------------
+
+Current tasks--
+Creating logs with titles based on date - creating text files with variable names
+Automating log creation process at end of day or on program shutdown
+Hashing passwords
+Functioning database of students, encrypted?
+Audio cues
+Prevent students from escaping program - alt+tab, alt + F4, maybe alt+ctrl+del?  Exit requires labassist/admin password
+
+
+calculate time
+admin, single student logout?
+auto hotkey
+end of day logout
+
+
+--Database--
+StudentID as primary key
+SQL matching for list box live updating
+StudentID hashed?
+Labassist/Admin views do not include StudentIDs?
+Encrypted?  Yes
