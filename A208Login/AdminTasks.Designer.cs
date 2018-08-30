@@ -35,8 +35,9 @@
             this.openLogToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportCurrentLogToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.logNameList = new System.Windows.Forms.ListBox();
             this.createDatabaseDumpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logNameList = new System.Windows.Forms.ListBox();
+            this.importDatabaseObjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +85,8 @@
             this.openLogToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openLogToolStripMenuItem,
             this.exportCurrentLogToolStripMenuItem1,
-            this.createDatabaseDumpToolStripMenuItem});
+            this.createDatabaseDumpToolStripMenuItem,
+            this.importDatabaseObjectsToolStripMenuItem});
             this.openLogToolStripMenuItem1.Name = "openLogToolStripMenuItem1";
             this.openLogToolStripMenuItem1.Size = new System.Drawing.Size(114, 38);
             this.openLogToolStripMenuItem1.Text = "Logging";
@@ -93,16 +95,23 @@
             // openLogToolStripMenuItem
             // 
             this.openLogToolStripMenuItem.Name = "openLogToolStripMenuItem";
-            this.openLogToolStripMenuItem.Size = new System.Drawing.Size(361, 38);
+            this.openLogToolStripMenuItem.Size = new System.Drawing.Size(377, 38);
             this.openLogToolStripMenuItem.Text = "Open Log";
             this.openLogToolStripMenuItem.Click += new System.EventHandler(this.openLogToolStripMenuItem_Click);
             // 
             // exportCurrentLogToolStripMenuItem1
             // 
             this.exportCurrentLogToolStripMenuItem1.Name = "exportCurrentLogToolStripMenuItem1";
-            this.exportCurrentLogToolStripMenuItem1.Size = new System.Drawing.Size(361, 38);
+            this.exportCurrentLogToolStripMenuItem1.Size = new System.Drawing.Size(377, 38);
             this.exportCurrentLogToolStripMenuItem1.Text = "Export Current Log";
             this.exportCurrentLogToolStripMenuItem1.Click += new System.EventHandler(this.exportCurrentLogToolStripMenuItem1_Click);
+            // 
+            // createDatabaseDumpToolStripMenuItem
+            // 
+            this.createDatabaseDumpToolStripMenuItem.Name = "createDatabaseDumpToolStripMenuItem";
+            this.createDatabaseDumpToolStripMenuItem.Size = new System.Drawing.Size(377, 38);
+            this.createDatabaseDumpToolStripMenuItem.Text = "Create Database Dump";
+            this.createDatabaseDumpToolStripMenuItem.Click += new System.EventHandler(this.createDatabaseDumpToolStripMenuItem_Click);
             // 
             // logNameList
             // 
@@ -115,12 +124,12 @@
             this.logNameList.Size = new System.Drawing.Size(282, 374);
             this.logNameList.TabIndex = 2;
             // 
-            // createDatabaseDumpToolStripMenuItem
+            // importDatabaseObjectsToolStripMenuItem
             // 
-            this.createDatabaseDumpToolStripMenuItem.Name = "createDatabaseDumpToolStripMenuItem";
-            this.createDatabaseDumpToolStripMenuItem.Size = new System.Drawing.Size(361, 38);
-            this.createDatabaseDumpToolStripMenuItem.Text = "Create Database Dump";
-            this.createDatabaseDumpToolStripMenuItem.Click += new System.EventHandler(this.createDatabaseDumpToolStripMenuItem_Click);
+            this.importDatabaseObjectsToolStripMenuItem.Name = "importDatabaseObjectsToolStripMenuItem";
+            this.importDatabaseObjectsToolStripMenuItem.Size = new System.Drawing.Size(377, 38);
+            this.importDatabaseObjectsToolStripMenuItem.Text = "Import Database Objects";
+            this.importDatabaseObjectsToolStripMenuItem.Click += new System.EventHandler(this.importDatabaseObjectsToolStripMenuItem_Click);
             // 
             // AdminTasks
             // 
@@ -153,5 +162,6 @@
         private System.Windows.Forms.ListBox logNameList;
         private System.Windows.Forms.ToolStripMenuItem openLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createDatabaseDumpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importDatabaseObjectsToolStripMenuItem;
     }
 }

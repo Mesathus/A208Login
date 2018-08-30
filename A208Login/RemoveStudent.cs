@@ -96,9 +96,9 @@ namespace A208Login
             {
                 using (var myform = new AdminLogin())
                 {
-                    myform.ShowDialog();
-                    if (myform.DialogResult == DialogResult.OK && (myform.authok == "Admin" || myform.authok == "Administrator"))
-                    {
+                    //myform.ShowDialog();
+                    //if (myform.DialogResult == DialogResult.OK && (myform.authok == "Admin" || myform.authok == "Administrator"))
+                    //{
                         string name = studentListBox.SelectedItem.ToString();
                         string[] fullname = name.Split(',');                    //tokenizes name for searching the DB
                         string lastname = fullname[0].Trim();
@@ -114,11 +114,11 @@ namespace A208Login
                         {
                             MessageBox.Show("Error removing student.");
                         }
-                    }
-                    else
+                    //}
+                    /*else
                     {
                         MessageBox.Show("Failed to remove student.");
-                    }
+                    }*/
                 }
             }
         }

@@ -140,7 +140,7 @@ namespace A208Login
         public bool DupeCheck(string pass)  //checks database for duplicate student IDs
         {
             SqlConnection connectionstring = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Students.mdf;Integrated Security=True;Connect Timeout=30");
-            string querypassword = "SELECT StudentID FROM dbo.Student WHERE Student.StudentID = @password;";
+            string querypassword = "SELECT LastName FROM dbo.Student WHERE Student.StudentID = @password;";
             SqlCommand cmd = new SqlCommand();
             SqlParameter passParam = new SqlParameter("@password", SqlDbType.NVarChar, 50);
             cmd.Connection = connectionstring;
@@ -164,6 +164,9 @@ namespace A208Login
          * names to exist in the student DB.  It is left here for posterity and should the previous methodology
          * be reintroduced.
          */
+
+
+         /*
         public bool DupeCheck(string firstname, string lastname)  //checks database for duplicate student IDs
         {
             SqlConnection connectionstring = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Students.mdf;Integrated Security=True;Connect Timeout=30");
@@ -185,7 +188,9 @@ namespace A208Login
             }
             connectionstring.Close();
             return false;
-        }
+        }*/
+
+
         /*
          * This function is used by the admin login form to differentiate between the Lab Assist logins
          * and the Admin logins when trying to access forms that are forbidden to Lab Assistants
