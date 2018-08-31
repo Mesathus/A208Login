@@ -218,42 +218,44 @@ namespace A208Login
                 "Student IDs of fewer than 7 characters will have 0s appended to the beginning to meet length requirements.");
             try
             {
-                OpenFileDialog readFile = new OpenFileDialog();
-                readFile.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|xml files (*.xml)|*.xml";
-                readFile.FilterIndex = 2;
-                readFile.RestoreDirectory = true;
-                int counter = 0;
-                if (readFile.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog readFile = new OpenFileDialog())
                 {
-                    using (StreamReader inputFile = new StreamReader(readFile.FileName))
+                    readFile.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|xml files (*.xml)|*.xml";
+                    readFile.FilterIndex = 2;
+                    readFile.RestoreDirectory = true;
+                    int counter = 0;
+                    if (readFile.ShowDialog() == DialogResult.OK)
                     {
-                        while (!inputFile.EndOfStream)
+                        using (StreamReader inputFile = new StreamReader(readFile.FileName))
                         {
-                            string[] inputData = inputFile.ReadLine().Split(',');
-                            if (inputData[2].Length <= 7 && int.TryParse(inputData[2], out int pass))
-                            { 
-                                while(inputData[2].Length < 7)
+                            while (!inputFile.EndOfStream)
+                            {
+                                string[] inputData = inputFile.ReadLine().Split(',');
+                                if (inputData[2].Length <= 7 && int.TryParse(inputData[2], out int pass))
                                 {
-                                    inputData[2] = "0" + inputData[2];
-                                }
-                                Valid student = new Valid(inputData[1], inputData[0], inputData[2]);
-                                if (!student.DupeCheck(student.Pass))
-                                {
-                                    student.InsertStudent(student);
-                                    counter++;
+                                    while (inputData[2].Length < 7)
+                                    {
+                                        inputData[2] = "0" + inputData[2];
+                                    }
+                                    Valid student = new Valid(inputData[1], inputData[0], inputData[2]);
+                                    if (!student.DupeCheck(student.Pass))
+                                    {
+                                        student.InsertStudent(student);
+                                        counter++;
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
                                 }
                                 else
                                 {
-                                    continue;
+                                    MessageBox.Show("An error has occured.  Failed to find a number for Student ID" +
+                                        " or Student ID was greater than seven digits long.");
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("An error has occured.  Failed to find a number for Student ID" +
-                                    " or Student ID was greater than seven digits long.");
-                            }
+                            MessageBox.Show(counter.ToString() + " students imported successfully.");
                         }
-                        MessageBox.Show(counter.ToString() + " students imported successfully.");
                     }
                 }
             }

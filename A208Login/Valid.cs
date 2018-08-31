@@ -145,7 +145,7 @@ namespace A208Login
             SqlParameter passParam = new SqlParameter("@password", SqlDbType.NVarChar, 50);
             cmd.Connection = connectionstring;
             cmd.CommandText = querypassword;
-            passParam.Value = pass;
+            passParam.Value = Utility.Encrypt(pass, false);
             cmd.Parameters.Add(passParam);
             connectionstring.Open();
             SqlDataReader reader = cmd.ExecuteReader();
