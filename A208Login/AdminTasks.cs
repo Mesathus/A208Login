@@ -31,6 +31,8 @@ namespace A208Login
             DirectoryInfo logpath = ResetDir();
             PopLogs(logpath);
         }
+
+        private bool backedUp = false;
         /*
          * This is the function that resets the directory to the base application directory and appends it
          * with \Logs to create a path to the log files.  This path may be modified, but then also needs to
@@ -167,15 +169,26 @@ namespace A208Login
             PopLogs(ResetDir());
         }
 
+        
+        private void createDatabaseDumpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void importDatabaseObjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
         /*
          * The following function is called from the Full Database Dump menu item, it retrieves the
          * entire student DB and creates a CSV file with it.  This module was created to aid in 
          * determining which students need to be purged from the database.
          */
-        private void createDatabaseDumpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void createDatabaseDumpToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+
             try
-            {                
+            {
                 SaveFileDialog saveFile = new SaveFileDialog();
 
                 saveFile.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|xml files (*.xml)|*.xml";
@@ -184,7 +197,7 @@ namespace A208Login
                                                     //Maintaining the directory in other forms is still 
                                                     //performed for reliability.
                 if (saveFile.ShowDialog() == DialogResult.OK)
-                {                    
+                {
                     using (StreamWriter outputfile = new StreamWriter(saveFile.FileName))
                     {
                         //first line creates the header line for later importing the data
@@ -197,24 +210,32 @@ namespace A208Login
                         for (int i = 0; i < fullDB.Count; i++)
                         {
                             string[] logLine = fullDB[i].Split(',');
-                            outputfile.WriteLine(logLine[0] + "," + logLine[1] + "," + Utility.Decrypt(logLine[2],false));          //writing each list item to file
+                            outputfile.WriteLine(logLine[0] + "," + logLine[1] + "," + Utility.Decrypt(logLine[2], false));          //writing each list item to file
                         }
                         allStudents = null;
                         fullDB = null;
+                        backedUp = true;
                     }
-                }                
+                }
                 saveFile = null;    //removes the save dialog from memory
             }
             catch
             {
                 MessageBox.Show("Error exporting plain text log file.");
+                backedUp = false;
             }
         }
 
-        private void importDatabaseObjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        /*
+         *      Method added to allow the mass importing of database objects.  This function has specific formatting requirements
+         *      for its data files, requiring them to be in Last Name, First Name, StudentID order for correct entry into the database.
+         *      A note appears in a message box when clicked, but is still contingent on correct user input.
+         */
+        private void importDatabaseObjectsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("When importing students, the file must be in a comma separated format." + Environment.NewLine + 
-                "Students must be listed LastName,FirstName,StudentID." + Environment.NewLine + 
+            //message to user to inform of input requirements
+            MessageBox.Show("When importing students, the file must be in a comma separated format." + Environment.NewLine +
+                "Students must be listed LastName,FirstName,StudentID." + Environment.NewLine +
                 "Student IDs of fewer than 7 characters will have 0s appended to the beginning to meet length requirements.");
             try
             {
@@ -222,26 +243,26 @@ namespace A208Login
                 {
                     readFile.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|xml files (*.xml)|*.xml";
                     readFile.FilterIndex = 2;
-                    readFile.RestoreDirectory = true;
-                    int counter = 0;
+                    readFile.RestoreDirectory = true;   //restore directory to default after files are selected
+                    int counter = 0;    //counter to track how many students are successfully added
                     if (readFile.ShowDialog() == DialogResult.OK)
                     {
                         using (StreamReader inputFile = new StreamReader(readFile.FileName))
                         {
-                            while (!inputFile.EndOfStream)
+                            while (!inputFile.EndOfStream)  //loop the entirety of the file
                             {
-                                string[] inputData = inputFile.ReadLine().Split(',');
-                                if (inputData[2].Length <= 7 && int.TryParse(inputData[2], out int pass))
-                                {
-                                    while (inputData[2].Length < 7)
+                                string[] inputData = inputFile.ReadLine().Split(',');   //split each line, hence the comma requirement
+                                if (inputData[2].Length <= 7 && int.TryParse(inputData[2], out int pass))   //check to see if the user ID meets DB requirements
+                                {   
+                                    while (inputData[2].Length < 7) //the DB requires user IDs to be 7 digits, as Excel trims beginning 0s we must add them
                                     {
-                                        inputData[2] = "0" + inputData[2];
+                                        inputData[2] = "0" + inputData[2];  //append 0s to the ID until it is 7 digits long
                                     }
-                                    Valid student = new Valid(inputData[1], inputData[0], inputData[2]);
-                                    if (!student.DupeCheck(student.Pass))
+                                    Valid student = new Valid(inputData[1].Trim(), inputData[0].Trim(), inputData[2]);    //create the student, encryption is handled in the Valid class functions
+                                    if (!student.DupeCheck(student.Pass))   //check to see if the user is already in the DB
                                     {
-                                        student.InsertStudent(student);
-                                        counter++;
+                                        student.InsertStudent(student);     //insert new students
+                                        counter++;  //increment counter to track number of students added
                                     }
                                     else
                                     {
@@ -250,11 +271,13 @@ namespace A208Login
                                 }
                                 else
                                 {
+                                    //Message box is displayed if the third value on each comma separated line is not a number
                                     MessageBox.Show("An error has occured.  Failed to find a number for Student ID" +
                                         " or Student ID was greater than seven digits long.");
                                 }
                             }
-                            MessageBox.Show(counter.ToString() + " students imported successfully.");
+                            MessageBox.Show(counter.ToString() + " students imported successfully.");   //displays the student counter to compare against
+                                                                                                        //expected number of students added
                         }
                     }
                 }
@@ -263,6 +286,36 @@ namespace A208Login
             {
                 MessageBox.Show("An error has occured while attempting to import students." + Environment.NewLine +
                     "Import process has been terminated.");
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)    //Exit menu item added for convenience so the user doesn't have to use ControlBox items
+        {
+            this.Close();
+        }
+
+        /*
+         *  Method created to backup and scrub the database.  This is intended to be used each semester to allow administrators to import a current
+         *  list of enrolled students.  
+         */
+        private void backupAndDeleteDatabaseEntriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Warning, this will remove all entries from the student database.");
+            try
+            {
+                createDatabaseDumpToolStripMenuItem.PerformClick(); //call the full DB dump function
+                if (backedUp == true)   //check against form property set by the DB dump function
+                {
+                    Valid student = new Valid("filler", "filler", "%"); //creates a student with a wildcard password for a full delete
+                    if (student.RemoveStudent(student))
+                    {
+                        MessageBox.Show("Database has been backed up and scrubbed.");
+                    }
+                }                
+            }
+            catch
+            {
+                MessageBox.Show("An error has occured while performing the delete process.");
             }
         }
     }

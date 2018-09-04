@@ -63,7 +63,7 @@ namespace A208Login
 
         public string First
         {
-             get { return _fname; }
+            get { return _fname; }
         }
         public string Last
         {
@@ -298,6 +298,7 @@ namespace A208Login
             }            
         }
 
+        //9/4/18 change, SQL statement from = to LIKE to support database scrubbing method in Forms.AdminTasks
         public bool RemoveStudent(Valid student)
         {
             try
@@ -306,7 +307,7 @@ namespace A208Login
                 using (SqlConnection sqlcon = new SqlConnection(connectionstring))
                 {
                     SqlParameter passParam = new SqlParameter("@password", SqlDbType.NVarChar, 50);                    
-                    string removename = "DELETE FROM dbo.Student WHERE Student.StudentID = @password;";
+                    string removename = "DELETE FROM dbo.Student WHERE Student.StudentID LIKE @password;";
                     passParam.Value = student.Pass;
                     SqlCommand cmd = new SqlCommand(removename, sqlcon);
                     cmd.Parameters.Add(passParam);
