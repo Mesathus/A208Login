@@ -39,7 +39,7 @@ namespace A208Login
                      * prevented injection and precluded the need for apostrophe escape sequencing
                      */
                     bool validname = true;
-                    bool validpass = true;
+                    bool validpass = false;
                     string name = firstBox.Text.Trim();
                     foreach (char c in name)
                     {
@@ -68,19 +68,19 @@ namespace A208Login
                     {                               //can be adjusted based on current length of YT Student IDs
                         if (passBox.Text == confirmBox.Text)
                         {
-                            string password = passBox.Text;
-                            foreach (char n in password)
+                            string password = passBox.Text;                            
+                            if(int.TryParse(password, out int temp))    //check password is a number
                             {
-                                if (!char.IsDigit(n))   //verifies that the password entered is a number
-                                {                       //could be replaced with a TryParse but an output
-                                    validpass = false;  //value is unnecessary
-                                }
+                                validpass = true;
                             }
                         }
                     }
-                    if (!validpass)
+                    if(!validpass)
                     {
                         MessageBox.Show("Please enter your seven digit student ID");
+                        passBox.Clear();
+                        confirmBox.Clear();
+                        passBox.Focus();
                     }
                     if (validname && validpass)
                     {

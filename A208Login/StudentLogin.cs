@@ -9,7 +9,7 @@ using System.Windows.Forms;
  * Version: 1.0
  * Created: Feb 2018
  * Current Version: 1.4
- * Last Updated: 8/29/2018
+ * Last Updated: 9/4/2018
  * Originally designed for YTC student lab
  * See attached document for initial design specs and notes
  * Initial Administrator password: ComeAtMeBro
